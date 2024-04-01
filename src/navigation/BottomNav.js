@@ -3,7 +3,12 @@ import HomeScreen from "../screens/HomeScreen";
 import {useEffect} from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import NetInfo from "@react-native-community/netinfo";
+import VideoScreen from "../screens/VideoScreen";
+import FriendsScreen from "../screens/FriendsScreen";
+import NotificationsScreen from "../screens/NotificationsScreen";
+
 const Tab = createMaterialBottomTabNavigator();
+
 
 function BottomNav({navigation}){
 
@@ -18,7 +23,13 @@ function BottomNav({navigation}){
     },[]);
     return(
         <Tab.Navigator
-            screenOptions={{
+
+            barStyle={{
+                height: 40,
+                justifyContent: 'center',
+            }}
+            screenOptions={
+            {
                 tabBarActiveTintColor: '#e91e63',
 
             }}
@@ -26,13 +37,45 @@ function BottomNav({navigation}){
             <Tab.Screen name='HomeScreen'
                         component={HomeScreen}
                         options={{headerShown: false,
-                            tabBarLabel: 'HOME',
+                            title:'',
                             tabBarIcon: ({ color }) => (
-                                <MaterialCommunityIcons name="home" color={color} size={26} />
+                                <MaterialCommunityIcons name="home" color={color} size={20} />
                             ),
                         }}
 
             />
+            <Tab.Screen name='VideoScreen'
+                          component={VideoScreen}
+                          options={{headerShown: false,
+                              title:'',
+                              tabBarIcon: ({ color }) => (
+                                  <MaterialCommunityIcons name="video" color={color} size={20} />
+                              ),
+                          }}
+
+             />
+            <Tab.Screen name='FriendsScreen'
+                        component={FriendsScreen}
+                        options={{headerShown: false,
+                            title:'',
+                            tabBarIcon: ({ color }) => (
+                                <MaterialCommunityIcons name="account-supervisor"  color={color} size={20} />
+                            ),
+                        }}
+
+            />
+            <Tab.Screen name='NotificationsScreen'
+                        component={NotificationsScreen}
+                        options={{headerShown: false,
+                            title:'',
+                            tabBarIcon: ({ color }) => (
+                                <MaterialCommunityIcons name="bell-ring" color={color} size={20} />
+                            ),
+                        }}
+
+            />
+
+
 
         </Tab.Navigator>
     );
